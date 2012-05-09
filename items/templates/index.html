@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Просмотр списка статей{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+    <table>
+    <tr><th>Название</th><th></th></tr>
+    {% for item in itemsProd %}
+        <tr><td>{{ item.name }}</td>
+        <td><a href="/items/delete/{{ item.id }}">удалить</a></td></tr>
+    {% empty %}
+        <tr>Продуктов не обнаружено :(</tr>
+    {% endfor %}
+
+    <tr>
+        {% csrf_token %}
+        <td> {{ form.name }} </td>
+        <td> <input type="submit" value="submit"/> </td>
+    </tr>
+
+    </table>
+    </form>
+{% endblock %}
