@@ -7,7 +7,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    # ('TyVik', 'tyvik@mail.ru'),
 )
 
 MANAGERS = ADMINS
@@ -15,9 +15,19 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite'
+        'NAME': os.path.join(PROJECT_PATH, 'db.sqlite')
     }
 }
+"""
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'TyVik$default',
+        'USER': 'TyVik',
+        'PASSWORD': 'QuitHoon',
+        'HOST': 'mysql.server'
+    }
+"""
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -136,15 +146,9 @@ INSTALLED_APPS = (
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
-    },
     'handlers': {
         'mail_admins': {
             'level': 'ERROR',
-            'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
         }
     },

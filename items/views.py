@@ -6,8 +6,8 @@ from markettyvik.utils.advancedListView import AdvancedListView
 class ItemsView(AdvancedListView):
     model = Items
     context_object_name = 'itemsProd'
-    template_name = 'index.html'
-    success_url = '/items/index/'
+    template_name = 'items.html'
+    success_url = '/items/'
 
     def get_queryset(self):
         return Items.objects.all()

@@ -3,7 +3,6 @@
 
 from functools import update_wrapper
 from django.views.generic.edit import DeletionMixin, ModelFormMixin
-from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.list import ListView
 from django.utils.decorators import classonlymethod
 
@@ -45,4 +44,3 @@ class AdvancedListView(ListView, ModelFormMixin, DeletionMixin):
     # object, note that browsers only support POST for now.
     def put(self, *args, **kwargs):
         return self.post(*args, **kwargs)
-
