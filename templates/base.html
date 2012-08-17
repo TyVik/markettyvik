@@ -3,7 +3,14 @@
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <title>TyVik &bull; {% block title %}{% endblock %}</title>
-    <style>{% block styles %}{% endblock %}</style>
+    <style>
+ 	   html {
+			background-color: #C3C3C3;
+			width: 100%;
+			font-family: 'Segoe Script';
+		}
+    	{% block styles %}{% endblock %}
+    </style>
 </head>
 <body>
 {% block content %}{% endblock %}
