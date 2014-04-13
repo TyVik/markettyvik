@@ -8,7 +8,7 @@ from django.views.generic.simple import direct_to_template
 #admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^items/', include('markettyvik.items.urls')),
+    url(r'^items/', include('items.urls')),
     url(r'^$', direct_to_template, {'template': 'index.html'})
 #    url(r'^admin/', include(admin.site.urls)),
     # Examples:

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 from models import Items
-from markettyvik.utils.advancedListView import AdvancedListView
+from utils.advancedListView import AdvancedListView
 
 class ItemsView(AdvancedListView):
     model = Items
