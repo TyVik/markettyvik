@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Список покупок{% endblock %}
+
+{% block content %}
+    <center>
+        <table>
+            <tr><th>Название</th><th></th></tr>
+            {% for item in itemsProd %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td><img src="{% static 'items/delete.png' %}" data-id="{{ item.id }}" class="delete"></td>
+                </tr>
+            {% empty %}
+                <tr>Пустотенюшки :(</tr>
+            {% endfor %}
+        </table>
+
+        <form action="" method="post">
+            <table>
+                <tr>
+                    {% csrf_token %}
+                    <td> {{ form }} </td>
+                    <td> <input type="submit" value="submit"/> </td>
+                </tr>
+            </table>
+        </form>
+    </center>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+    $(".delete").click(function(event) {
+        $.get("delete/"+$(event.target).attr("data-id"), function(data){
+            if (data == "ok") {
+                $(event.target).parent().parent().remove();
+            }
+        });
+    });
+    </script>
+{% endblock %}
