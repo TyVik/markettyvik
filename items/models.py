@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib import admin
 
 class Items(models.Model):
-    name = models.CharField(max_length=128, verbose_name=u'')
+    name = models.CharField(max_length=128, verbose_name=u'Name')
 
     def __unicode__(self):
         return self.name
