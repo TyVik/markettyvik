@@ -5,3 +5,16 @@ $(".delete").click(function(event) {
         }
     });
 });
+
+$(".add").click(function(event) {
+    $.ajax({
+        url: "/api/v1/items/",
+        type: "POST",
+        data: JSON.stringify($("#addForm").serializeObject()),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function(data) {
+            alert('123');
+        }
+    });
+});
