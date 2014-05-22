@@ -1,7 +1,13 @@
 $(".delete").click(function(event) {
-    $.get("delete/"+$(event.target).attr("data-id"), function(data){
-        if (data == "ok") {
-            $(event.target).parent().parent().remove();
+    var element = $(event.target);
+    var id = element.attr("data-id");
+    $.ajax({
+        url: "/api/v1/items/" + id + "/",
+        type: "DELETE",
+        success: function(data, textStatus, jqXHR) {
+            if (jqXHR.status === 204) {
+                element.parent().parent().remove();
+            }
         }
     });
 });
