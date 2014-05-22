@@ -1,4 +1,4 @@
-$(".delete").click(function(event) {
+$(document).on('click', '.delete', function(event){
     var element = $(event.target);
     var id = element.attr("data-id");
     $.ajax({
@@ -13,14 +13,18 @@ $(".delete").click(function(event) {
 });
 
 $(".add").click(function(event) {
+    var form = $("#addForm");
     $.ajax({
         url: "/api/v1/items/",
         type: "POST",
-        data: JSON.stringify($("#addForm").serializeObject()),
+        data: JSON.stringify(form.serializeObject()),
         dataType: "json",
         contentType: "application/json; charset=utf-8",
-        success: function(data) {
-            alert('123');
+        success: function(data, textStatus, jqXHR) {
+            if (jqXHR.status === 201) {
+                form.trigger('reset');
+                $("#itemsList tbody").append('<tr><td>' + data.name + '</td><td><span class="glyphicon glyphicon-minus delete" data-id="' + data.id + '"></span></td></tr>');
+            }
         }
     });
 });
