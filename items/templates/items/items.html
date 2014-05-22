@@ -3,30 +3,69 @@
 
 {% block title %}Список покупок{% endblock %}
 
-{% block content %}
-    <center>
-        <table>
-            <tr><th>Название</th><th></th></tr>
-            {% for item in itemsProd %}
-                <tr>
-                    <td>{{ item.name }}</td>
-                    <td><img src="{% static 'items/delete.png' %}" data-id="{{ item.id }}" class="delete"></td>
-                </tr>
-            {% empty %}
-                <tr>Пустотенюшки :(</tr>
-            {% endfor %}
-        </table>
+{% block head_styles %}
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'items/main.css' %}" />
+{% endblock head_styles %}
 
-        <form action="" method="post">
-            <table>
+{% block head_scripts %}
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+{% endblock head_scripts %}
+
+{% block content %}
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Список покупок</a>
+            </div>
+
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Главная</a></li>
+                    <li><a href="#about">О проекте</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="starter-template">
+            <table class="table table-striped table-hover text-left">
                 <tr>
-                    {% csrf_token %}
-                    <td> {{ form }} </td>
-                    <td> <input type="submit" value="submit"/> </td>
+                    <th>Название</th>
+                    <th class="col-sm-1"></th>
                 </tr>
+                {% for item in itemsProd %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td><span class="glyphicon glyphicon-minus delete" data-id="{{ item.id }}"></span></td>
+                    </tr>
+                {% empty %}
+                    <tr>Пустотенюшки :(</tr>
+                {% endfor %}
             </table>
-        </form>
-    </center>
+
+            <form action="" method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    {{ field.errors }}
+                    {{ field }}
+                {% endfor %}
+                <input type="submit" value="submit"/>
+            </form>
+        </div>
+    </div>
 {% endblock %}
 
 {% block scripts %}

@@ -5,10 +5,9 @@
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <title>TyVik &bull; {% block title %}{% endblock %}</title>
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}" />
-    <style>{% block styles %}{% endblock %}</style>
+    {% block head_styles %}{% endblock %}
+    {% block head_scripts %}{% endblock %}
 </head>
 <body>
 {% block content %}{% endblock %}
