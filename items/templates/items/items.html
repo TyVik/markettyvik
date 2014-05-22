@@ -69,13 +69,5 @@
 {% endblock %}
 
 {% block scripts %}
-    <script type="text/javascript">
-    $(".delete").click(function(event) {
-        $.get("delete/"+$(event.target).attr("data-id"), function(data){
-            if (data == "ok") {
-                $(event.target).parent().parent().remove();
-            }
-        });
-    });
-    </script>
+    <script src="{% static 'items/main.js' %}"></script>
 {% endblock %}
