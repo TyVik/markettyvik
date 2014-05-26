@@ -1,0 +1,11 @@
+<uwsgi>
+  <socket>/var/www/tyvik/markettyvik/deploy/data/markettyvik.sock</socket>
+  <plugins>python27</plugins>
+  <pythonpath>/var/www/tyvik/markettyvik</pythonpath>
+  <virtualenv>/var/www/tyvik/markettyvik/venv</virtualenv>
+  <module>markettyvik.wsgi</module>
+  <master />
+  <workers>4</workers>
+  <processes>2</processes>
+  <uid>www-data</uid>
+</uwsgi>
